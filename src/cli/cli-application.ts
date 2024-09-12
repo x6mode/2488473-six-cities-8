@@ -1,6 +1,7 @@
 import { ICommand } from './commands/command.interface.js';
 
 import { CommandParser } from './command-parser.js';
+import chalk from 'chalk';
 
 
 type CommandCollection = Record<string, ICommand>;
@@ -16,7 +17,7 @@ export class CLIApplication {
   public registerCommands(commandList: ICommand[]): void {
     commandList.forEach((command) => {
       if (Object.hasOwn(this.commands, command.getName())) {
-        throw new Error(`Command ${command.getName()} is already registered`);
+        throw new Error(`${chalk.red.bold('ERROR')} | Комнда ${chalk.red(command.getName())} уже зарегистрирована`);
       }
       this.commands[command.getName()] = command;
     });
@@ -24,7 +25,7 @@ export class CLIApplication {
 
   public getDefaultCommand(): ICommand | never {
     if (! this.commands[this.defaultCommand]) {
-      throw new Error(`The default command (${this.defaultCommand}) is not registered.`);
+      throw new Error(`${chalk.red.bold('ERROR')} | Команда обозначеннная как дефолтная ${(chalk.gray.italic(`(${this.defaultCommand})`))} is not registered.`);
     }
     return this.commands[this.defaultCommand];
   }

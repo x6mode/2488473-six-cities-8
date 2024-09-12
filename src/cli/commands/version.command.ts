@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { ICommand } from './command.interface.js';
 import { resolve } from 'node:path';
+import chalk from 'chalk';
 
 
 type PackageJSONConfig = {
@@ -29,7 +30,7 @@ export class VersionCommand implements ICommand {
     const importedContent: unknown = JSON.parse(jsonContent);
 
     if (!isPackageJSONConfig(importedContent)) {
-      throw new Error('Failed to parse json content.');
+      throw new Error(`${chalk.red.bold('ERROR')} | Невозможно распарсить файл ${chalk.italic.gray('он не является NPM файлом')}`);
     }
 
     return importedContent.version;
@@ -40,7 +41,7 @@ export class VersionCommand implements ICommand {
       const version = this.readVersion();
       console.info(version);
     } catch (error: unknown) {
-      console.error(`Failed to read version from ${this.filePath}`);
+      console.error(`${chalk.red.bold('ERROR')} Не удалось прочитать версию в: ${chalk.red(this.filePath)}`);
 
       if (error instanceof Error) {
         console.error(error.message);
