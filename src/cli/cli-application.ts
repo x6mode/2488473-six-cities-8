@@ -17,7 +17,7 @@ export class CLIApplication {
   public registerCommands(commandList: ICommand[]): void {
     commandList.forEach((command) => {
       if (Object.hasOwn(this.commands, command.getName())) {
-        throw new Error(`${chalk.red.bold('ERROR')} | Комнда ${chalk.red(command.getName())} уже зарегистрирована`);
+        throw new Error(`${chalk.red.bold('ERROR')} | Команда ${chalk.red(command.getName())} уже зарегистрирована`);
       }
       this.commands[command.getName()] = command;
     });
