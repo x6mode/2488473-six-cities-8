@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { ICommand } from './command.interface.js';
 
 export class HelpCommand implements ICommand {
@@ -9,10 +10,10 @@ export class HelpCommand implements ICommand {
     console.info(`
         Программа для подготовки данных для REST API сервера.
         Пример:
-            cli.js --<command> [--arguments]
+            cli.js ${chalk.yellow('--<command>')} ${chalk.yellow('[--arguments]')}
         Команды:
-            --version:                   # выводит номер версии
-            --help:                      # печатает этот текст
+            ${chalk.cyan('--version')}:                   # выводит номер версии
+            ${chalk.cyan('--help')}:                      # печатает этот текст
     `);
   }
 }

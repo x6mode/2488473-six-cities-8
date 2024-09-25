@@ -9,6 +9,7 @@
   ],
   "main": "main.js",
   "scripts": {
+    "cli": "npm run ts ./src/cli/index.ts",
     "start": "npm run build && node ./dist/main.js",
     "build": "npm run clean && npm run compile",
     "lint": "eslint src/ --ext .ts",
