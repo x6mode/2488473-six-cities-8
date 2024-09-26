@@ -19,6 +19,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist",
+    "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
     "types": [
       "node",
