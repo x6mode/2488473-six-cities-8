@@ -1,8 +1,8 @@
+import 'reflect-metadata';
 import { createRestApplicationContainer } from './rest/rest.container.js';
 
 import { Components } from './types/components.js';
 import { RestApplication } from './rest/rest.application.js';
-
 
 async function bootstrap () {
   const appContainer = createRestApplicationContainer();

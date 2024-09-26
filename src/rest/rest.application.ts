@@ -3,7 +3,6 @@ import { Components } from '../types/components.js';
 
 import { DatabaseClient } from '../shared/libs/database-client.js';
 import { Logger } from '../shared/libs/logger/index.js';
-import 'reflect-metadata';
 
 @injectable()
 export class RestApplication {
@@ -13,7 +12,7 @@ export class RestApplication {
   ) {}
 
   private initDB () {
-    this.database.connect('fas');
+    this.database.connect('mongodb://localhost:27017/');
   }
 
   public init () {
