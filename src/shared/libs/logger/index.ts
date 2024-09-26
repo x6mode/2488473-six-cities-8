@@ -18,19 +18,19 @@ export class Logger implements ILogger {
     this.logger.info('Logger created....');
   }
 
-  info(message: string, ...args: unknown[]): void {
+  public info(message: string, ...args: unknown[]): void {
     this.logger.info(message, ...args);
   }
 
-  debug(message: string, ...args: unknown[]): void {
+  public debug(message: string, ...args: unknown[]): void {
     this.logger.debug(message, ...args);
   }
 
-  error(message: string, ...args: unknown[]): void {
+  public error(message: string, ...args: unknown[]): void {
     this.logger.error(message, ...args);
   }
 
-  warn(message: string, ...args: unknown[]): void {
+  public warn(message: string, ...args: unknown[]): void {
     this.logger.warn(message, ...args);
   }
 }

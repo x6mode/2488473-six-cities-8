@@ -17,7 +17,7 @@ export class RestApplication {
   }
 
   public init () {
-    this.logger.info('🚀 Application started...');
+    this.logger.info('🚀 Application initialization...');
 
     this.initDB();
   }

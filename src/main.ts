@@ -8,7 +8,7 @@ async function bootstrap () {
   const appContainer = createRestApplicationContainer();
 
   const application = appContainer.get<RestApplication>(Components.RestApplication);
-  application.init();
+  await application.init();
 }
 
 bootstrap();
