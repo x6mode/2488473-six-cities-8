@@ -1,25 +1,14 @@
-import { TUser } from './user.js';
+import { ICategory } from './category.js';
+import { IUser } from './user.js';
 
-type TFacilities = 'Breakfast' | 'Air conditioning' | 'Laptop friendly workspace' | 'Baby seat' | 'Washer' | 'Towels' | 'Fridge';
-
-export type TOffer = {
+export interface IOffer {
   name: string;
   description: string;
   publicData: string;
-  city: 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf' ;
   previewPhoto: string;
-  photos: [string, string, string, string, string, string];
-  isPremium: boolean;
-  isFavorite: boolean;
-  rating: number;
-  type: 'apartment' | 'house' | 'room' | 'hotel';
-  rooms: number;
-  adults: number;
-  facilities: TFacilities[];
-  author: TUser;
+  type: 'Куплю' | 'Продам';
   commentsLength: number;
-  coordinates: {
-    latitude: number;
-    longitude: number;
-  }
-};
+  price: number;
+  author: IUser;
+  categories: ICategory[];
+}

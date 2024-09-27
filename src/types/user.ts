@@ -1,7 +1,7 @@
-export type TUser = {
-  name: string;
+export interface IUser {
+  firstname: string;
+  lastname: string
   mail: string;
   password: string;
-  isPro: boolean
   avatar?: string;
 }
