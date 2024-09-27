@@ -34,7 +34,7 @@ export class DatabaseClient implements IDatabaseClient {
     let attempt = 0;
     while (attempt < MAX_ATTEMPT) {
       try {
-        this.mongoose = await mongoose.connect(uri);
+        this.mongoose = await mongoose.connect(uri, { socketTimeoutMS: 3000, connectTimeoutMS: 3000 });
         this.logger.info('Database successfully connected!');
         this.isConnected = true;
       } catch (error) {
