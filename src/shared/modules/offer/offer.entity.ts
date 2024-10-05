@@ -5,17 +5,17 @@ import { IOffer, TOfferCity, TOfferConvenience, TOfferCoordinates, TOfferType } 
 
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-interface OfferEntity extends defaultClasses.Base {}
+export interface OfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
   schemaOptions: {
-    collection: 'users',
+    collection: 'offers',
     timestamps: true,
   }
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-class OfferEntity extends defaultClasses.TimeStamps implements IOffer {
+export class OfferEntity extends defaultClasses.TimeStamps implements IOffer {
   @prop({ required: true })
   public name: string;
 

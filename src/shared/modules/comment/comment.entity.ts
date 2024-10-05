@@ -1,7 +1,13 @@
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 import { IUser } from '../../../types/user.js';
 import { IComment } from '../../../types/comment.js';
 
+@modelOptions({
+  schemaOptions: {
+    collection: 'comments',
+    timestamps: true,
+  }
+})
 
 class CommentEntity implements IComment {
   @prop({ required: true })
