@@ -26,6 +26,6 @@ export class OfferService implements IOfferService {
   }
 
   public async find(id: string): DocumentTypegoose<OfferEntity> {
-    return await OfferModel.findById({ id });
+    return await OfferModel.findById({ id }).exec();
   }
 }
