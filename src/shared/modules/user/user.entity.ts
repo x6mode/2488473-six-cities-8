@@ -1,7 +1,7 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 import { getHashPassword } from '../../../utils/crypto.js';
 
-import { IUser } from '../../../types/user.js';
+import { IUser, TUserType } from '../../../types/user.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 interface UserEntity extends defaultClasses.Base {}
@@ -25,18 +25,18 @@ class UserEntity extends defaultClasses.TimeStamps implements IUser {
   public password: string;
 
   @prop({ required: true })
-  public firstname: string;
+  public name: string;
 
   @prop({ required: true })
-  public lastname: string;
+  public type: TUserType;
 
   constructor (userData: IUser) {
     super();
 
     this.mail = userData.mail;
     this.avatar = userData.avatar;
-    this.firstname = userData.firstname;
-    this.lastname = userData.lastname;
+    this.type = userData.type;
+    this.name = userData.name;
   }
 
   public setPassword(password: string, salt: string) {

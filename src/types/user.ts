@@ -1,7 +1,9 @@
+export type TUserType = 'pro' | 'обычный';
+
 export interface IUser {
-  firstname: string;
-  lastname: string
+  name: string;
   mail: string;
-  password: string;
   avatar?: string;
+  type: TUserType;
+  password: string;
 }

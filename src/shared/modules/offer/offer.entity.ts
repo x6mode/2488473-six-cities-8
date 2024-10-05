@@ -1,8 +1,7 @@
 import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 
-import { IOffer } from '../../../types/offer.js';
 import { IUser } from '../../../types/user.js';
-import { ICategory } from '../../../types/category.js';
+import { IOffer, TOfferCity, TOfferConvenience, TOfferCoordinates, TOfferType } from '../../../types/offer.js';
 
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
@@ -18,13 +17,13 @@ interface OfferEntity extends defaultClasses.Base {}
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class OfferEntity extends defaultClasses.TimeStamps implements IOffer {
   @prop({ required: true })
-  public author: IUser;
-
-  @prop({ required: true })
   public name: string;
 
   @prop({ required: true })
   public description: string;
+
+  @prop({ required: true })
+  public city: TOfferCity;
 
   @prop({ required: true })
   public publicData: string;
@@ -33,16 +32,40 @@ class OfferEntity extends defaultClasses.TimeStamps implements IOffer {
   public previewPhoto: string;
 
   @prop({ required: true })
-  public type: 'Куплю' | 'Продам';
+  public type: TOfferType;
 
-  @prop()
-  public commentsLength: number;
+  @prop({ required: true })
+  public photos: string[];
+
+  @prop({ required: true })
+  public isPremium: boolean;
+
+  @prop({ required: true })
+  public isFavorite: boolean;
+
+  @prop({ required: true })
+  public rating: number;
+
+  @prop({ required: true })
+  public rooms: number;
+
+  @prop({ required: true })
+  public guests: number;
 
   @prop({ required: true })
   public price: number;
 
   @prop({ required: true })
-  public categories: ICategory[];
+  public convenience: TOfferConvenience;
+
+  @prop()
+  public commentsLength: number;
+
+  @prop({ required: true })
+  public author: IUser;
+
+  @prop({ required: true })
+  public coordinates: TOfferCoordinates;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);
