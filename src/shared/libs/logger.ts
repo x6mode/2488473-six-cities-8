@@ -15,7 +15,6 @@ export class Logger implements ILogger {
 
   constructor () {
     this.logger = pino();
-    this.logger.info('Logger created....');
   }
 
   public info(message: string, ...args: unknown[]): void {

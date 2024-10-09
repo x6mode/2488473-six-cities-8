@@ -2,7 +2,7 @@ import { Container } from 'inversify';
 
 import { Components } from '../types/components.js';
 
-import { Logger } from '../shared/libs/logger/index.js';
+import { Logger } from '../shared/libs/logger.js';
 import { DatabaseClient } from '../shared/libs/database-client.js';
 import { RestApplication } from './rest.application.js';
 

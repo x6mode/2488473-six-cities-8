@@ -1,5 +1,5 @@
 import { inject } from 'inversify';
-import { Logger } from '../../libs/logger/index.js';
+import { Logger } from '../../libs/logger.js';
 
 import { DocumentTypegoose } from '../../../types/global.js';
 import { Components } from '../../../types/components.js';

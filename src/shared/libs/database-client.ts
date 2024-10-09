@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import { setTimeout } from 'node:timers/promises';
 
 import { Components } from '../../types/components.js';
-import { Logger } from './logger/index.js';
+import { Logger } from './logger.js';
 
 
 const MAX_ATTEMPT = 5;
@@ -40,6 +40,11 @@ export class DatabaseClient implements IDatabaseClient {
       } catch (error) {
         attempt++;
         this.logger.error(`Database can't connect on try ${attempt}`, error as Error);
+
+        if (attempt === MAX_ATTEMPT) {
+          throw new Error('Database fatal error!');
+        }
+
         await setTimeout(FOR_TIMEOUT);
       }
     }
