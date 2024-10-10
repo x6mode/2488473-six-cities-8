@@ -10,7 +10,8 @@ import { CreateOfferDto } from './dto/create-offer-dto.js';
 
 interface IOfferService {
   create(dto: CreateOfferDto): DocumentTypegoose<OfferEntity>;
-  find(id: string): DocumentTypegoose<OfferEntity>;
+  patchById(offerId: string, dto: CreateOfferDto): DocumentTypegoose<OfferEntity>;
+  findById(id: string): DocumentTypegoose<OfferEntity>;
 }
 
 export class OfferService implements IOfferService {
@@ -25,7 +26,18 @@ export class OfferService implements IOfferService {
     return offer;
   }
 
-  public async find(id: string): DocumentTypegoose<OfferEntity> {
-    return await OfferModel.findById({ id }).exec();
+  public async patchById(offerId: string, dto: CreateOfferDto): DocumentTypegoose<OfferEntity> {
+    const patchedOffer = await OfferModel
+      .findByIdAndUpdate(offerId, dto, { new: true })
+      .exec();
+
+    this.logger.info(`Offer with id: ${patchedOffer?._id} has been patched!`);
+    return patchedOffer;
+  }
+
+  public async findById(id: string): DocumentTypegoose<OfferEntity> {
+    return await OfferModel
+      .findById({ id })
+      .exec();
   }
 }
